@@ -110,6 +110,22 @@ class HomeController extends Controller
                 'sales'
             ));
         }
+        else if(Auth()->user()->hasRole('data minor')){
+
+             return view('home', compact(
+                'paidinvoice',
+                'unpaidinvoice',
+                'category',
+                'brand',
+                'currency',
+                'projects',
+                'leads',
+                'paidleads',
+                'unpaidleads',
+                'production',
+                'sales'
+            ));
+        }
 
     }
 
