@@ -11,7 +11,7 @@
                 <div class="card-header py-3 d-flex justify-content-between align-items-center">
                     <h6 class="m-0 font-weight-bold text-primary text-capitalize">{{ $client->name }} Detail</h6>
                 </div>
-                <div class="card-body">              
+                <div class="card-body">
                     <table class="table table-bordered">
                         <tr>
                             <td><b>Name</b></td>
@@ -35,7 +35,7 @@
             <div class="card shadow">
                 <div class="card-body text-center lead text-info">
                     <i class="fa fa-desktop mb-3"></i>
-                    <p class="text-black">Paid Invoices</p>      
+                    <p class="text-black">Paid Invoices</p>
                     <h4>{{ $cpi->currencies->sign . $cpi->amount }}</h4>
                 </div>
             </div>
@@ -47,14 +47,14 @@
                 <div class="card shadow">
                     <div class="card-body text-center lead text-info">
                         <i class="fa fa-desktop mb-3"></i>
-                        <p class="text-black">UnPaid Invoices</p>      
+                        <p class="text-black">UnPaid Invoices</p>
                         <h4>{{ $cupi->currencies->sign . $cupi->amount }}</h4>
                     </div>
                 </div>
             </div>
         @endforeach
 
-  
+
     </div>
 
     <div class="row mt-4">
@@ -65,7 +65,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Invoices</h6>
                     <a class="btn btn-success" href="{{ url('file-export/'.$client->id) }}">Excel</a>
                 </div>
-                <div class="card-body">              
+                <div class="card-body">
                     <table class="table table-bordered" width="100%" cellspacing="0">
                         <thead>
                             <tr>
@@ -79,7 +79,7 @@
                                 <th rowspan="1" colspan="1">Action</th>
                             </tr>
                         </thead>
-                        
+
                         <tfoot>
                             <tr>
                                 <th rowspan="1" colspan="1">ID</th>
@@ -93,8 +93,8 @@
                             </tr>
                         </tfoot>
 
-                        
-                        <tbody>  
+
+                        <tbody>
                             @forelse ($client->leads as $lead)
                                 <tr>
                                     <td><div class="btn btn-info"># {{ $lead->invoice_number}}</div></td>
@@ -114,7 +114,7 @@
                                 <tr colspan="5">
                                     <td>No Data Found</td>
                                 </tr>
-                            @endforelse                                                              
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

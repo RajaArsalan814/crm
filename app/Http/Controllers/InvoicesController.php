@@ -16,6 +16,7 @@ use App\Exports\InvoiceImport;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use App\Imports\ImportLeads;
 
 class InvoicesController extends Controller
 {
@@ -50,7 +51,7 @@ class InvoicesController extends Controller
      */
     public function store(Request $request)
     {
-        // 
+        //
         if (!Auth::user()->hasPermission('create-lead')) abort(403);
         $request->validate([
             'client_id' => 'required',
@@ -89,12 +90,12 @@ class InvoicesController extends Controller
             $invoice = Invoices::create($details);
 
             Mail::to($request['email'])->send(new MailTemplate("
-            Hello! 
-            Welcome to ".env("APP_NAME")." - ".$request->name." 
+            Hello!
+            Welcome to ".env("APP_NAME")." - ".$request->name."
             Invoice is generated successfully.
             invoice no# " .$request->invoice_number."
             If you have any questions do not hesitate to reach out at ".env("APP_EMAIL")));
-            
+
             return back()->with('success', "Insert successfully");
         } catch (\Exception $e) {
             return back()->with('error', json_encode($e->getMessage()));
@@ -190,7 +191,7 @@ class InvoicesController extends Controller
         //
     }
 
-    
+
     public function leadstatus($id, $status){
         try {
             if($status == '1'){
@@ -208,13 +209,13 @@ class InvoicesController extends Controller
         }
     }
 
-    public function invoiceExport() 
+    public function invoiceExport()
     {
         return Excel::download(new InvoiceImport(), 'invoices.xlsx');
-    } 
-    
-    
+    }
+
     public function invoicebyClient($id){
         return Excel::download(new LeadByClientImport($id), 'clientinvoice.xlsx');
     }
+
 }

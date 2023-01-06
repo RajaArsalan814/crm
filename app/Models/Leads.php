@@ -9,6 +9,7 @@ class Leads extends Model
 {
     use HasFactory;
 
+    public $fillable = ['first_name', 'last_name', 'email','contact','brand','service','user_id'];
     /**
      * Get the user associated with the Leads
      *
@@ -17,6 +18,11 @@ class Leads extends Model
     public function brand()
     {
         return $this->hasOne(Brands::class, 'id', 'brand_id');
+    }
+
+    public function service()
+    {
+        return $this->hasOne(Services::class, 'id', 'service_id');
     }
 
 }

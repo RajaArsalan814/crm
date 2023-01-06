@@ -110,7 +110,7 @@
                                     <td class="small">{{$milestone->user->name}}<br /> {{$milestone->user->email}}</td>
                                     <td>{{$milestone->updated_at}}</td>
                                     {{-- <td></td> --}}
-                                    {{-- <td>
+                                     {{-- <td>
                                         <a href="{{ url('leadstaatus/'.$lead->id.'/'.$lead->payment_status) }}" class="btn btn-{{ $lead->payment_status == '1' ? 'success' : 'danger' }} ">{{ $lead->payment_status == '1' ? 'Paid' : 'UnPaid' }} </a>
                                     </td>
                                     <td>

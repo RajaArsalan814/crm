@@ -52,7 +52,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('tasknotify/{id}/{notify}', [App\Http\Controllers\TasksController::class, 'tasknotify']);
     Route::get('subtaskbyid/{id}', [App\Http\Controllers\SubtaskController::class, 'subtaskbyid']);
 
-
     Route::get('file-export/{id}', [App\Http\Controllers\InvoicesController::class, 'invoicebyClient'])->name('invoicebyclient');
     Route::get('invoice-export', [App\Http\Controllers\InvoicesController::class, 'invoiceExport'])->name('invoice-export');
 
@@ -60,13 +59,27 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('sale_agent/create',  [App\Http\Controllers\SalesTargetController::class, 'sale_agent_create'])->name('sale_agents.create');
     Route::post('sale_agent/store',  [App\Http\Controllers\SalesTargetController::class, 'sale_agents_store'])->name('sale_agent.store');
 
+
+
+    Route::get('sale_target_view',  [App\Http\Controllers\SalesTargetController::class, 'sale_target_view'])->name('sale_target_view');
+    Route::get('sale_target_index',  [App\Http\Controllers\SalesTargetController::class, 'sale_target_index'])->name('sale_target_index');
+
+    Route::get('lead_to_client', [App\Http\Controllers\ClientsController::class, 'lead_to_client'])->name('lead_to_client');
+    Route::post('client_store',  [App\Http\Controllers\ClientsController::class, 'client_store'])->name('client_store');
+    Route::get('client_adds', [App\Http\Controllers\ClientsController::class, 'client_adds'])->name('client_adds');
+
+
+
     Route::get('all_leads',  [App\Http\Controllers\LeadController::class, 'index'])->name('leads');
     Route::get('lead_create',  [App\Http\Controllers\LeadController::class, 'lead_create'])->name('lead_create');
     Route::post('lead_store',  [App\Http\Controllers\LeadController::class, 'lead_store'])->name('lead_store');
 
 
-    Route::get('sale_target_view',  [App\Http\Controllers\SalesTargetController::class, 'sale_target_view'])->name('sale_target_view');
-    Route::get('sale_target_index',  [App\Http\Controllers\SalesTargetController::class, 'sale_target_index'])->name('sale_target_index');
+    Route::get('/file-import',[App\Http\Controllers\LeadController::class,'importView'])->name('import-view');
+    Route::post('/import',[App\Http\Controllers\LeadController::class,'import'])->name('import');
+
+
+
 
 });
 

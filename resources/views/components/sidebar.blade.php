@@ -121,12 +121,20 @@
             </li>
             @endpermission
 
+            @permission('add-client')
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('client_adds')}}">
+                    <i class="fas fa-fw fa-user"></i>
+                <span>Clients </span></a>
+            </li>
+            @endpermission
+
 
             @permission('sale-agents')
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('sale_agents.index') }}">
                     <i class="fas fa-fw fa-user"></i>
-                <span>Sales Agents (Only)</span></a>
+                <span>Sales Agents </span></a>
             </li>
             @endpermission
 
@@ -184,7 +192,7 @@
                 </div>
             </li>
             @endif
-            {{-- @endpermission --}}
+        {{-- @endpermission --}}
 
 
             @permission('add-logobrief')

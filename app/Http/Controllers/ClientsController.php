@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
 use Gate;
+use App\Models\Leads;
+use App\Models\MyClient;
 
 class ClientsController extends Controller
 {
@@ -110,6 +112,7 @@ class ClientsController extends Controller
      */
     public function show(Clients $clients, $id)
     {
+
         //
         if (!Auth::user()->hasPermission('show-client')) abort(403);
         $client = Clients::find($id);
@@ -246,6 +249,40 @@ class ClientsController extends Controller
 
         return view('admin.clients.lead', compact('packages', 'currencies', 'services', 'client'));
     }
+
+    public function lead_to_client(){
+        $leads = Leads::get();
+        return view('client.create',compact('leads'));
+    }
+
+    public function client_store(Request $request){
+
+
+
+        $lead_id = $request->lead_id;
+        $lead = Leads::where('id',$lead_id)->first();
+        $m_clients = MyClient::where('email',$lead->email)->first();
+        if(isset($m_clients)){
+            return back()->with('error', 'This client is  already created !');
+        }else{
+        $client = new MyClient;
+        $client->name = $lead->first_name;
+        $client->last_name = $lead->last_name;
+        $client->email = $lead->email;
+        $client->contact = $lead->contact;
+        $client->user_id = Auth::user()->id;
+        $client->status = '0';
+        $client->save();
+        return redirect()->route('client_adds')->with('success', "Client Create successfully");
+        }
+    }
+
+    public function client_adds(){
+
+        $clients = MyClient::where('user_id',Auth::user()->id)->get();
+        return view('client.clients',compact('clients'));
+    }
+
 
 
 }

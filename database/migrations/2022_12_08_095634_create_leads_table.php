@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('last_name')->nullable();
             $table->string('email')->nullable();
             $table->string('contact')->nullable();
-            $table->integer('brand')->nullable();
+            $table->string('brand')->nullable();
+            $table->string('service_id')->nullable();
             $table->timestamps();
         });
     }
