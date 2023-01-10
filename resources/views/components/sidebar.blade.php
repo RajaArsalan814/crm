@@ -165,13 +165,23 @@
             @endpermission --}}
 
                         <!-- Nav Item - Tables -->
-                        @permission('leads')
+                    @permission('leads')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('leads') }}">
                                 <i class="fas fa-fw fa-money-bill-wave"></i>
                                 <span>Leads</span></a>
                         </li>
                     @endpermission
+
+
+                    @permission('admin-leads')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin_leads') }}">
+                                <i class="fas fa-fw fa-money-bill-wave"></i>
+                                <span>Leads</span></a>
+                        </li>
+                    @endpermission
+
 
             {{-- @permission('breif-access') --}}
             <!-- Nav Item - Utilities Collapse Menu -->

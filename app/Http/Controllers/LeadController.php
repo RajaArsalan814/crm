@@ -13,9 +13,18 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class LeadController extends Controller
 {
+
+
+    public function admin_leads() {
+
+        $leads = Leads::with('brand','service','users')->orderBy('id',"DESC")->get();
+        return view('admin.leads.lead',compact('leads'));
+
+    }
     public function index() {
 
         $sale_agent_id=Auth::user()->id;
+
         $leads = Leads::with('brand','service')->where('user_id',$sale_agent_id)->get();
         return view('leads.lead',compact('leads'));
     }

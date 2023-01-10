@@ -79,7 +79,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/import',[App\Http\Controllers\LeadController::class,'import'])->name('import');
 
 
-
+    Route::get('admin_leads',  [App\Http\Controllers\LeadController::class, 'admin_leads'])->name('admin_leads');
 
 });
 

@@ -25,4 +25,8 @@ class Leads extends Model
         return $this->hasOne(Services::class, 'id', 'service_id');
     }
 
+    public function users()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }
