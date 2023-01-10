@@ -44,6 +44,15 @@
                         </select>
                         {{-- <x-select name="service" label="Service" :collection="$services" /> --}}
                     </div>
+                    <div class="col-md-4">
+                        <x-input name="social_link" label="Social Link" type="text" placeholder="Link" value="{{  old('link')  }}" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="">Inquiry</label>
+                        <textarea name="inquiry" id="" cols="20" class="form-control" rows="5"></textarea>
+                    </div>
+
 
                     {{-- <div class="col-md-4">
                         <x-select name="status" label="Status" :collection="$status"  />

@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('contact')->nullable();
             $table->string('brand')->nullable();
             $table->string('service_id')->nullable();
+            $table->string('social_link')->nullable();
+            $table->string('inquiry')->nullable();
             $table->timestamps();
         });
     }

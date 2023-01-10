@@ -30,6 +30,8 @@ class ImportLeads implements ToModel
             'contact' => $row[3],
             'brand' => $row[4],
             'service' => $row[5],
+            'social_link' => $row[6],
+            'inquiry' => $row[7],
             'user_id' => $this->id,
         ]);
     }

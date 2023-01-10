@@ -37,6 +37,9 @@ class LeadController extends Controller
         $lead->brand = $request->brand;
         $lead->service = $request->service;
         $lead->user_id = Auth::user()->id;
+        $lead->social_link = $request->social_link;
+        $lead->inquiry = $request->inquiry;
+
         $lead->save();
         return redirect()->route('leads')->with('success', "Client Create successfully");
     }

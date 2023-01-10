@@ -8,6 +8,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
             <h6 class="m-0 font-weight-bold text-primary">Lead List</h6>
+            @permission('lead-create')
             <form action="{{ route('import') }}"  method="POST" enctype="multipart/form-data" >
 
                 @csrf
@@ -19,6 +20,7 @@
                 {{-- <a href="{{ route('lead_create')}}" class="btn btn-info"><i class="fa fa-plus-circle"></i> Create Lead</a> --}}
             </form>
             <a href="{{ route('lead_create')}}" class="btn btn-info"><i class="fa fa-plus-circle"></i> Create Lead</a>
+            @endpermission
         </div>
         <div class="card-body">
             <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0">
@@ -31,6 +33,8 @@
                         <th rowspan="1" colspan="1">Contact</th>
                         <th rowspan="1" colspan="1">Brand</th>
                         <th rowspan="1" colspan="1">Service</th>
+                        <th rowspan="1" colspan="1">Social Link</th>
+                        <th rowspan="1" colspan="1">Inquiry</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -42,6 +46,8 @@
                         <th rowspan="1" colspan="1">Contact</th>
                         <th rowspan="1" colspan="1">Brand</th>
                         <th rowspan="1" colspan="1">Service</th>
+                        <th rowspan="1" colspan="1">Social Link</th>
+                        <th rowspan="1" colspan="1">Inquiry</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -55,6 +61,8 @@
                             <td>{{$item->contact}}</td>
                             <td>{{$item->brand}}</td>
                             <td>{{$item->service}}</td>
+                            <td>{{$item->social_link}}</td>
+                            <td>{{$item->inquiry}}</td>
                             {{-- <td><a href="{{$item->url}}" target="_blank" class="btn btn-light">{{$item->url}}</a></td>
                             <td><span class="btn small {{ $item->status == '1' ? 'btn-success': 'btn-warning' }}">{{ $item->status == '1' ? 'Active' : 'Deactive'}}</span></td> --}}
                             {{-- <td>

@@ -9,7 +9,7 @@ class Leads extends Model
 {
     use HasFactory;
 
-    public $fillable = ['first_name', 'last_name', 'email','contact','brand','service','user_id'];
+    public $fillable = ['first_name', 'last_name', 'email','contact','brand','service','user_id','inquiry','social_link'];
     /**
      * Get the user associated with the Leads
      *
